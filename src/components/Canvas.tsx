@@ -26,11 +26,11 @@ export class Game extends React.Component {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawBall();
 
-            if (positionX + dx > canvas.width - ballRadius|| positionX + dx < 0 || positionX + dx < ballRadius) {
+            if (positionX + dx > canvas.width - ballRadius|| positionX + dx < ballRadius) {
                 dx = -dx
             }
 
-            if (positionY + dy > canvas.height - ballRadius || positionY + dy < 0 || positionY + dy < ballRadius) {
+            if (positionY + dy > canvas.height - ballRadius || positionY + dy < ballRadius) {
                 dy = -dy
             }
 

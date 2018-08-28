@@ -133,10 +133,10 @@ var Game = /** @class */ (function (_super) {
         function drawFrame() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawBall();
-            if (positionX + dx > canvas.width || positionX + dx < 0 || positionX + dx < ballRadius) {
+            if (positionX + dx > canvas.width - ballRadius || positionX + dx < ballRadius) {
                 dx = -dx;
             }
-            if (positionY + dy > canvas.height - ballRadius || positionY + dy < 0 || positionY + dy < ballRadius) {
+            if (positionY + dy > canvas.height - ballRadius || positionY + dy < ballRadius) {
                 dy = -dy;
             }
             positionX += dx;
