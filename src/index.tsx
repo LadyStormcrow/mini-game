@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { Hello } from './components/Hello';
+import { Game } from './components/Canvas';
 
 ReactDOM.render(
-    <Hello compiler='Typescript' framework='React' />,
-    document.getElementById('example') as HTMLElement
+    <Game />,
+    document.getElementById('root') as HTMLElement
 );
