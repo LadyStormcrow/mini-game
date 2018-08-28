@@ -122,10 +122,10 @@ var Game = /** @class */ (function (_super) {
         var positionY = canvas.height - 30;
         var dx = 2;
         var dy = -2;
-        setInterval(drawFrame, 10);
+        var ballRadius = 10;
         function drawBall() {
             ctx.beginPath();
-            ctx.arc(positionX, positionY, 10, 0, Math.PI * 2);
+            ctx.arc(positionX, positionY, ballRadius, 0, Math.PI * 2);
             ctx.fillStyle = "#0095DD";
             ctx.fill();
             ctx.closePath();
@@ -133,9 +133,16 @@ var Game = /** @class */ (function (_super) {
         function drawFrame() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawBall();
+            if (positionX + dx > canvas.width || positionX + dx < 0 || positionX + dx < ballRadius) {
+                dx = -dx;
+            }
+            if (positionY + dy > canvas.height - ballRadius || positionY + dy < 0 || positionY + dy < ballRadius) {
+                dy = -dy;
+            }
             positionX += dx;
             positionY += dy;
         }
+        setInterval(drawFrame, 10);
     };
     Game.prototype.render = function () {
         return (React.createElement("div", null,

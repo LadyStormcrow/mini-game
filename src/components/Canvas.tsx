@@ -12,11 +12,11 @@ export class Game extends React.Component {
         let dx: number = 2; 
         let dy: number =  -2; 
 
-        setInterval(drawFrame, 10); 
+        let ballRadius = 10; 
 
         function drawBall() {
             ctx.beginPath(); 
-            ctx.arc(positionX, positionY, 10, 0, Math.PI*2); 
+            ctx.arc(positionX, positionY, ballRadius, 0, Math.PI*2); 
             ctx.fillStyle = "#0095DD"; 
             ctx.fill(); 
             ctx.closePath();
@@ -25,9 +25,20 @@ export class Game extends React.Component {
         function drawFrame() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawBall();
+
+            if (positionX + dx > canvas.width - ballRadius|| positionX + dx < 0 || positionX + dx < ballRadius) {
+                dx = -dx
+            }
+
+            if (positionY + dy > canvas.height - ballRadius || positionY + dy < 0 || positionY + dy < ballRadius) {
+                dy = -dy
+            }
+
             positionX += dx; 
             positionY += dy; 
         } 
+
+        setInterval(drawFrame, 10); 
     }
 
     render() {
