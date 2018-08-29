@@ -83,7 +83,7 @@ tests/baselines/reference/dt
 TEST-results.xml
 package-lock.json
 
-/dist
+/dist/*
 /coverage
 *.log
 .vscode
